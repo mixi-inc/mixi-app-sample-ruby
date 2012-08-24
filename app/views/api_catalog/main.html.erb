@@ -1,0 +1,276 @@
+<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
+<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js' %>
+<% if @device == "PC" %>
+  <%= javascript_include_tag 'http://static.mixi.jp/js/application/connect.js' %>
+<% else %>
+  <%= javascript_include_tag 'http://static.mixi.jp/js/application/touch.js' %>
+<% end %>
+<%= javascript_include_tag 'quick_start' %>
+<%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/vader/jquery-ui.css' %>
+<%= stylesheet_link_tag 'popup' %>
+
+<div class="header">
+<h1>mixi API Quick Start</h1>
+</div>
+
+<div class="body">
+<div class="navigation"> 
+<p><a href="http://developer.mixi.co.jp/appli/ns/pc/api_list/" target="_blank">mixiアプリが利用できるAPIの一覧へ</a></p>
+<!--navigation--></div>
+
+<div class="samples">
+<ul class="sampleList">
+
+
+<li class="sample sample08 odd">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>友人の一覧を表示</span></h2>
+</div>
+<div class="body">
+<p class="description">アプリ本体の初期表示時から、数人の友人のサムネイル画像の一覧を表示できます。</p>
+<p class="thumbnail"><img src="/assets/sample_show_friends001.png" /></p>
+<div id="btnFriends" class="button"><a href="#"><span>友人の一覧を表示</span></a></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/connect/mixi_graph_api/mixi_io_spec_top/people-api/" target="_blank"> このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+
+
+<li class="sample sample09 even">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>ユーザー単位に文字列を登録・表示</span></h2>
+</div>
+<div class="body">
+<p class="description">ユーザ単位に文字列を登録、登録済みの文字列を表示することができます。</p>
+<p class="thumbnail"></p>
+<div id="btnUserData" class="button"><a href="#"><span>文字列を登録</span></a></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/appli/ns/pc/share_info/" target="_blank">このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+
+
+<li class="sample sample06 odd">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>ボイスを投稿する</span></h2>
+</div>
+<div class="body">
+<p class="description">ボイスをタイムラインに投稿できます。</p>
+<p class="thumbnail"><img src="/assets/sample_voice001.png" /></p>
+<div id="btnVoice" class="button"><a href="#"><span>アプリでつぶやく</span></a></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/appli/ns/pc/send_voice/" target="_blank">このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+
+
+<li class="sample sample03 even">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>友人にリクエストを送る</span></h2>
+</div>
+<div class="body">
+<p class="description">友人にリクエストを送ることができます。</p>
+<p class="thumbnail"><img src="/assets/sample_friend_request001.png" /></p>
+<div id="btnRequest" class="button"><a href="#"><span>リクエストを送る</span></a></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/appli/ns/pc/use_request_api/" target="_blank">このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+
+
+<li class="sample sample01 odd">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>友人に招待を送る</span></h2>
+</div>
+<div class="body">
+<p class="thumbnail"><img src="/assets/sample_send_invitation001.png" /></p>
+<div id="btnInvite" class="button"><a href="#"><span>招待する</span></a></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/appli/ns/pc/invite_appli/" target="_blank">このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+
+
+<li class="sample sample02 even">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>友人にメッセージを送る</span></h2>
+</div>
+<div class="body">
+<p class="description">友人を選んでメッセージを送ることができます。</p>
+
+
+<div class="thumbnail friendList">
+<ul id="messageFriends"></ul>
+</div>
+<div class="button" style="height:65px"><span>友人を一人選びクリックしてください。<br />※法人アカウントはメッセージ送信できません。</span></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/appli/ns/pc/send_message/" target="_blank">このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+
+
+<li class="sample sample05 odd">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>友人にアクティビティを送る</span></h2>
+</div>
+<div class="body">
+<p class="description">アクティビティを知らせることができます。</p>
+<p class="thumbnail"><img src="/assets/sample_activity001.png" /></p>
+<div id="btnActivity" class="button"><a href="#"><span>更新情報を公開</span></a></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/appli/ns/pc/send_activity/" target="_blank">このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+
+
+<li class="sample sample04 even">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>外部サイトへ誘導する</span></h2>
+</div>
+<div class="body">
+<p class="description">外部サイトへ遷移させることができます。</p>
+<p class="thumbnail"><img src="/assets/sample_outside_link001.png" /></p>
+<div id="btnGoOut" class="button"><a href="#"><span>外部サイトへの遷移</span></a></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/appli/ns/pc/nav_external/" target="_blank">このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+
+<% if @device == "PC" %>
+<li class="sample sample07 odd">
+<div class="content">
+<div class="header">
+<h2 class="heading"><span>写真をかんたん公開アルバムに登録する</span></h2>
+</div>
+<div class="body">
+<p class="description">写真をアップロードして投稿・かんたん公開アルバムに保存できます。</p>
+<p class="thumbnail"><img src="/assets/sample_add_to_easy_album001.png" /></p>
+<div id="btnPhoto" class="button"><a href="#"><span>アプリからmixiフォトに公開</span></a></div>
+</div>
+<div class="footer seeMore">
+<a href="http://developer.mixi.co.jp/appli/ns/pc/photo_upload_api/" target="_blank">このAPIについて詳しく見る<img src="/assets/icon/target_blank001.gif" /></a>
+</div>
+</div>
+<!--sample--></li>
+<% end %>
+
+
+</ul>
+<!--/samples--></div>
+
+<!--/body--></div>
+
+<!-- popup dialog by jquery ui-->
+<div id="result-dialog" class="ui-dialog"></div>
+
+<input id="appId" type="hidden" value="<%= @consumer_key %>" />
+<input id="appUrl" type="hidden" value="<%= @app_url %>" />
+<input id="relayUrl" type="hidden" value="<%= @relay_url %>" />
+<input id="runAppUrl" type="hidden" value="<%= @run_app_url %>" />
+<input id="sid" type="hidden" value="<%= @session_id %>" />
+<script type="text/javascript">
+$(function(){
+
+function init() {
+    mixi.init({
+        appId: $('#appId').val(),
+        relayUrl: $('#relayUrl').val()
+    });
+    gadgets.window.adjustHeight();
+}
+
+function setEvents() {
+    qs.api.appUrl = $('#appUrl').val(),
+    qs.api.runAppUrl = $('#runAppUrl').val(),
+    qs.api.sid = $('#sid').val(),
+
+    // 「招待する」ボタン押下時
+    $('#btnInvite').click(function() {
+        qs.api.postInvite();
+    });
+
+    // 「リクエストを送る」ボタン押下時
+    $('#btnRequest').click(function() {
+        var imgPath = "assets/api/pencils.png";
+        var body = "虹の色鉛筆を送ります。使ってね！";
+        qs.api.postRequest(imgPath, body);
+    });
+
+    // 「外部サイトへの遷移」ボタン押下時
+    $('#btnGoOut').click(function() {
+        qs.api.goOut('http://google.com/');
+    });
+
+    // 「更新情報を公開」ボタン押下時
+    $('#btnActivity').click(function() {
+        var imgPath = "assets/api/pencils.png";
+        var title = "お絵かきレベルが「達人」になりました！";
+        qs.api.postActivity(imgPath, title);
+    });
+
+    // 「アプリでつぶやく」ボタン押下時
+    $('#btnVoice').click(function() {
+        var status = "上手く描けたでしょ？";
+        qs.api.postVoice(status);
+    });
+
+    // 「アプリからmixiフォトに公開」ボタン押下時
+    $('#btnPhoto').click(function() {
+        var imgPath = "assets/api/photo.jpg";
+        qs.api.postPhoto(imgPath);
+    });
+
+    // 「友人の一覧を表示」ボタン押下時
+    $('#btnFriends').click(function() {
+        qs.api.showFriendsList();
+    });
+
+    // 「文字列を登録」ボタン押下時
+    $('#btnUserData').click(function() {
+        qs.dialog.showMsg(
+            '文字列を登録',
+            'このユーザにkey「selectedItem」、value「1」を登録します',
+            function(key, value) {
+                $(this).dialog("close");
+                qs.api.postUserData('selectedItem', '1');
+            }
+        );
+    });
+}
+
+function display() {
+    // メッセージ欄の友人一覧を表示
+    qs.api.showMessageFriendsList();
+}
+
+init();
+setEvents();
+display();
+
+});
+</script>
+

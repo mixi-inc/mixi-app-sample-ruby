@@ -1,0 +1,57 @@
+<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' %>
+<% if @device == "PC" %>
+  <%= javascript_include_tag 'http://static.mixi.jp/js/application/connect.js' %>
+<% else %>
+  <%= javascript_include_tag 'http://static.mixi.jp/js/application/touch.js' %>
+<% end %>
+
+<div class="header">
+<h1>mixi API Quick Start</h1>
+</div>
+
+<div class="body">
+
+<div class="start">
+<div class="content">
+<div class="body">
+
+<p class="description">サンプルアプリを使ってみよう！</p>
+
+<div class="button">
+<% if @viewer_id %>
+<a href="<%= main_path(device: @device, session_id: @sid).html_safe %>"><span>アプリを試す</span></a>
+<% else %>
+<a id="auth" href="#"><span>アプリを試す</span></a>
+<% end %>
+</div>
+</div>
+</div>
+<!--/start--></div>
+
+<!--/body--></div>
+
+<input id="appId" type="hidden" value="<%= @consumer_key %>" />
+<input id="relayUrl" type="hidden" value="<%= @relay_url %>" />
+<input id="scope" type="hidden" value="<%= @scope %>" />
+<input id="state" type="hidden" value="<%= URI.escape(JSON({ session_id: @sid, device: @device })) %>" />
+
+<script type="text/javascript">
+$(function(){
+
+mixi.init({
+    appId: $('#appId').val(),
+    relayUrl: $('#relayUrl').val()
+});
+gadgets.window.adjustHeight();
+
+// 「アプリを試す」ボタン押下時処理
+$('#auth').click(function() {
+    mixi.auth({
+        scope: $('#scope').val(),
+        state: $('#state').val()
+    });
+});
+
+});
+</script>
+
