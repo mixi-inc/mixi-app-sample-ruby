@@ -152,7 +152,7 @@ describe ApiCatalogController do
       oauth.stub!(:set!).and_return(oauth) 
       token.stub!(:oauth).and_return(oauth) 
       GraphApi::Client::Token.stub!(:find_by_user_id).and_return(token)
-      response = {'status' =>  200}
+      response = {status: 200}
       people = mock(GraphApi::Client::People)
       people.stub!(:lookup_my_friends).with({params: {count: 10}}).and_return(response)
       GraphApi::Client::People.stub!(:new).and_return(people)
@@ -198,7 +198,7 @@ describe ApiCatalogController do
       oauth.stub!(:set!).and_return(oauth) 
       token.stub!(:oauth).and_return(oauth) 
       GraphApi::Client::Token.stub!(:find_by_user_id).and_return(token)
-      response = {'status' =>  200}
+      response = {status: 200}
       persistence = mock(GraphApi::Client::Persistence)
       persistence.stub!(:get_my_user_data).and_return(response)
       GraphApi::Client::Persistence.stub!(:new).and_return(persistence)
