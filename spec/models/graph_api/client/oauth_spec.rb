@@ -55,7 +55,7 @@ describe GraphApi::Client::OAuth do
     @https.stub!(:use_ssl=).and_return(nil)
     @https.stub!(:request).and_return(@response)
     Net::HTTP.stub!(:new).with('secure.mixi-platform.com', 443).and_return(@https)
-    @oauth.send(:get_token, {}).should == {'status' =>  '200 ok'}
+    @oauth.send(:get_token, {}).should == {'status' => '200 ok'}
   end
 
 end
