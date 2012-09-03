@@ -48,7 +48,7 @@ module GraphApi
     #
     # #GraphApi::Client::OAuthのインスタンスを作成して、必要な値をセットする
     # oauth = GraphApi::Client::OAuth.instance
-    # oatuh.set!( 'your_consumer_key', 'your_consumer_secret', 'your_redirect_uri')
+    # oatuh.set!( 'a_consumer_key', 'a_consumer_secret', 'a_redirect_uri')
     #
     # #Authorizaiton Codeを使って新規にTokenを取得
     # token = oauth.create_token('xxxxxxxxxxxxxxxxxxxxxxxxx')

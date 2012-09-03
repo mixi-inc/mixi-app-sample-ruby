@@ -46,21 +46,21 @@ describe GraphApi::Client::Token do
   end
 
   it 'should call get!' do
-    token_hash = {access_token: "access_token", refresh_token: "refresh_token", expires_in: 1111}
+    token_hash = {access_token: 'access_token', refresh_token: 'refresh_token', expires_in: 1111}
     oauth = mock(GraphApi::Client::OAuth)
     oauth.stub!(:create_token).and_return(token_hash)
     @token.oauth = oauth
-    @token.stub!(:update_attributes!).and_return("GraphApi::Client::Token#update_attributes!")
-    @token.get!("aaaa").should == "GraphApi::Client::Token#update_attributes!"
+    @token.stub!(:update_attributes!).and_return('GraphApi::Client::Token#update_attributes!')
+    @token.get!('aaaa').should == 'GraphApi::Client::Token#update_attributes!'
   end
 
   it 'should call refresh!' do
-    token_hash = {access_token: "access_token", refresh_token: "refresh_token", expires_in: 1111}
+    token_hash = {access_token: 'access_token', refresh_token: 'refresh_token', expires_in: 1111}
     oauth = mock(GraphApi::Client::OAuth)
     oauth.stub!(:refresh_token).and_return(token_hash)
     @token.oauth = oauth
-    @token.stub!(:update_attributes!).and_return("GraphApi::Client::Token#update_attributes!")
-    @token.refresh!.should == "GraphApi::Client::Token#update_attributes!"
+    @token.stub!(:update_attributes!).and_return('GraphApi::Client::Token#update_attributes!')
+    @token.refresh!.should == 'GraphApi::Client::Token#update_attributes!'
   end
 
   it 'should return true' do
