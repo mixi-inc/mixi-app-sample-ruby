@@ -36,32 +36,32 @@ describe GraphApi::Client::Base do
   end
 
   it 'should return correct endpints' do
-    @api_client.endpoint_myself("hoge").should == "hoge/@me/@self"
-    @api_client.endpoint_friends("hoge").should == "hoge/@me/@friends"
+    @api_client.endpoint_myself('hoge').should == 'hoge/@me/@self'
+    @api_client.endpoint_friends('hoge').should == 'hoge/@me/@friends'
   end
 
   it 'should call get method' do
-    mock_response = {status: "200 ok"}
-    @api_client.should_receive(:call_api).with(:get, "/test/test", {}).and_return(mock_response)
-    @api_client.get("/test/test").should == mock_response
+    mock_response = {status: '200 ok'}
+    @api_client.should_receive(:call_api).with(:get, '/test/test', {}).and_return(mock_response)
+    @api_client.get('/test/test').should == mock_response
   end
 
   it 'should call post method' do
-    mock_response = {status: "200 ok"}
-    @api_client.should_receive(:call_api).with(:post, "/test/test", {}).and_return(mock_response)
-    @api_client.post("/test/test").should == mock_response
+    mock_response = {status: '200 ok'}
+    @api_client.should_receive(:call_api).with(:post, '/test/test', {}).and_return(mock_response)
+    @api_client.post('/test/test').should == mock_response
   end
 
   it 'should call put method' do
-    mock_response = {status: "200 ok"}
-    @api_client.should_receive(:call_api).with(:put, "/test/test", {}).and_return(mock_response)
-    @api_client.put("/test/test").should == mock_response
+    mock_response = {status: '200 ok'}
+    @api_client.should_receive(:call_api).with(:put, '/test/test', {}).and_return(mock_response)
+    @api_client.put('/test/test').should == mock_response
   end
 
   it 'should call delete method' do
-    mock_response = {status: "200 ok"}
-    @api_client.should_receive(:call_api).with(:delete, "/test/test", {}).and_return(mock_response)
-    @api_client.delete("/test/test").should == mock_response
+    mock_response = {status: '200 ok'}
+    @api_client.should_receive(:call_api).with(:delete, '/test/test', {}).and_return(mock_response)
+    @api_client.delete('/test/test').should == mock_response
   end
 
   it 'should have private_method "call_api"' do
@@ -71,6 +71,6 @@ describe GraphApi::Client::Base do
     @https.stub!(:use_ssl=).and_return(nil)
     @https.stub!(:request).and_return(@response)
     Net::HTTP.stub!(:new).with('api.mixi-platform.com', 443).and_return(@https)
-    @api_client.send(:call_api, :get, "/test/test", {} ).should == {"status" => "200 ok"}
+    @api_client.send(:call_api, :get, '/test/test', {} ).should == {'status' => '200 ok'}
   end
 end

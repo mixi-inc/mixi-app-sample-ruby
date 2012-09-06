@@ -36,37 +36,37 @@ describe GraphApi::Client::Persistence do
   end
 
   it 'shold call get_my_user_data' do
-    mock_response = {status: "200 ok"}
+    mock_response = {status: '200 ok'}
     @persistence.should_receive(:get_my_user_data).and_return(mock_response)
     @persistence.get_my_user_data.should == mock_response
   end
 
   it 'shold call get_friends_user_data' do
-    mock_response = {status: "200 ok"}
+    mock_response = {status: '200 ok'}
     @persistence.should_receive(:get_friends_user_data).and_return(mock_response)
     @persistence.get_friends_user_data.should == mock_response
   end
 
   it 'shold call get_my_user_data' do
-    mock_response = {status: "200 ok"}
+    mock_response = {status: '200 ok'}
     @persistence.should_receive(:get_my_user_data).and_return(mock_response)
     @persistence.get_my_user_data.should == mock_response
   end
 
   it 'shold call register_user_data' do
-    mock_response = {status: "200 ok"}
+    mock_response = {status: '200 ok'}
     @persistence.should_receive(:register_user_data).with('{"test" : "test"}').and_return(mock_response)
     @persistence.register_user_data('{"test" : "test"}') == mock_response
   end
 
   it 'shold call my_user_profile' do
-    mock_response = {status: "200 ok"}
+    mock_response = {status: '200 ok'}
     @persistence.should_receive(:register_user_data).with('{"test" : "test"}').and_return(mock_response)
     @persistence.register_user_data('{"test" : "test"}').should == mock_response
   end
 
   it 'shold call delete_user_data' do
-    mock_response = {status: "200 ok"}
+    mock_response = {status: '200 ok'}
     @persistence.should_receive(:delete_user_data).with(['hoge', 'fuga']).and_return(mock_response)
     @persistence.delete_user_data(['hoge', 'fuga']) == mock_response
   end

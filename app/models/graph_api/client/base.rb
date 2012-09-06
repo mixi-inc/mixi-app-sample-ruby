@@ -39,26 +39,25 @@ module GraphApi
     #
     #
     # = Description
-    # HTTPでGraph APIために必要なメソッドを切り出したモジュール
+    # HTTPでGraph APIために必要なメソッド持ったクラス。
+    # 各APIのクラスを作る場合はこれを継承する。
     #
     # = USAGE
-    #  # APIを利用するクラスにmix-in
+    #  # APIを利用するクラスを継承
     #  require_relative 'base'
     #
     #  module GraphApi
     #    module Client
-    #      class People
+    #      class People < GraphApi::Client::Base
     #
-    #      include GraphApi::Client::Base
-    #
-    #  # mix-inされたクラスでは、GraphApi::Client::Token
+    #  # 継承されたクラスでは、GraphApi::Client::Token
     #  # のオブジェクトを渡して初期化する
     #  GraphApi::Client::People.new(token)
     #
     #  #Graph APIの指定のエンドポイントに対しGETをする
     #  ENDPOINT_PREFIX = '/2/people'
     #  def get_my_profile
-    #    self.get(endpoint_myself(ENDPOINT_PREFIX), [])
+    #    self.get(endpoint_myself(ENDPOINT_PREFIX), {})
     #  end
     class Base
 
@@ -68,7 +67,7 @@ module GraphApi
       SELF    = '@self'
       FRIENDS = '@friends'
 
-      # Graph APIを叩くことでデータをやりとりするクラスの初期化メソッド
+      # 初期化メソッドでTokenのインスタンスを受け取る
       # ---
       # *Arguments*
       # (required) token: GraphApi::Client::Token
@@ -149,7 +148,7 @@ module GraphApi
         uri_elems = {host: HOST, path: path}
         uri_elems.merge!({query: query_string}) if query_string
         endpoint = URI::HTTP.build(uri_elems);
-  
+
         req = Net::HTTP.const_get(method.to_s.capitalize).new(endpoint.request_uri)
         @token.refresh! if @token.expired?
         req.add_field 'Authorization', "OAuth #{@token.access_token}"

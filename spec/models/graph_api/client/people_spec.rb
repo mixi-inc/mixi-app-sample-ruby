@@ -35,25 +35,25 @@ describe GraphApi::Client::People do
     @people = GraphApi::Client::People.new(token)
   end
 
-  it 'shold call lookup_friends' do
+  it 'should call lookup_friends' do
     mock_response = {status: "200 ok"}
     @people.should_receive(:lookup_friends).and_return(mock_response)
     @people.lookup_friends.should == mock_response
   end
 
-  it 'shold call lookup_my_friends' do
+  it 'should call lookup_my_friends' do
     mock_response = {status: "200 ok"}
     @people.should_receive(:lookup_my_friends).and_return(mock_response)
     @people.lookup_my_friends.should == mock_response
   end
 
-  it 'shold call get_my_friends' do
+  it 'should call get_my_friends' do
     mock_response = {status: "200 ok"}
     @people.should_receive(:get_my_profile).and_return(mock_response)
     @people.get_my_profile.should == mock_response
   end
 
-  it 'shold call my_user_profile' do
+  it 'should call my_user_profile' do
     mock_response = {'entry' => {'id' => 1111}}
     @people.should_receive(:get_my_profile).and_return(mock_response)
     @people.my_user_id.should == 1111
