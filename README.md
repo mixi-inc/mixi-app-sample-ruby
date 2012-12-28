@@ -1,4 +1,3 @@
-
 mixi-app-sample-ruby
 ====================
 Railsで構築された、Heroku上で動作するmixiアプリのサンプルです。
@@ -11,6 +10,7 @@ mixi API Quick Startは、
 利用可能な5分で自動生成されるアプリです。
  
 mixi API Quick Startのドキュメントページ
+
 http://developer.mixi.co.jp/appli/ns/api_quick_start/
  
 サンプルアプリの特長
@@ -29,6 +29,7 @@ http://developer.mixi.co.jp/appli/ns/api_quick_start/
 サンプルアプリの利用方法
 =====================
 下記リンクから御覧ください。
+
 http://developer.mixi.co.jp/appli/ns/api_quick_start/heroku/ 
 
 動作環境
